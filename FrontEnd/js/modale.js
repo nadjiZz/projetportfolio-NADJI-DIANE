@@ -19,9 +19,9 @@
 				}
 			}
 			// L'utilisateur clique decu por suprimer
-            const supprimeElement = document.createElement("i");
-            supprimeElement.classList.add('fa-solid, fa-trash-can');
-            sectionProjet.appendChild(supprimeElement);
+            //const supprimeElement = document.createElement("i");
+            //supprimeElement.classList.add('fa-solid, fa-trash-can');
+            //sectionProjet.appendChild(supprimeElement);
 
 
 

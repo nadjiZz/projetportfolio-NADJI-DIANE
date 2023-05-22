@@ -22,8 +22,6 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 }; // L'utilisateur clique decu por suprimer
-
-
-var supprimeElement = document.createElement("i");
-supprimeElement.classList.add('fa-solid, fa-trash-can');
-sectionProjet.appendChild(supprimeElement);
+//const supprimeElement = document.createElement("i");
+//supprimeElement.classList.add('fa-solid, fa-trash-can');
+//sectionProjet.appendChild(supprimeElement);

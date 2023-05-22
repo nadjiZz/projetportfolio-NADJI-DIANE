@@ -28,9 +28,21 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
-	line-height: 1;
+#edition {
+	height: 100%;
+	width: 100%;
+	align-items: center;
+	box-sizing: border-box;
+	justify-content: center;
+	background-color: #0f0f0f;
+	color: white;
 }
+.publiez {
+	background-color: white;
+	color: #0f0f0f;
+	padding: .5rem;
+}
+
 ol, ul {
 	list-style: none;
 }
@@ -53,6 +65,7 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 	margin: 50px;
+	line-height: 1;
 }
 header {
 	display: flex;
@@ -64,8 +77,6 @@ section {
 }
 
 h1{
-	display: flex;
-	flex-direction: column;
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
@@ -99,6 +110,10 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
+a {
+	text-decoration: none;
+	color: #0f0f0f;
+}
 #introduction {
 	display: flex;
 	align-items: center;
@@ -128,11 +143,16 @@ li:hover {
 	color: #0f0f0f;
 
 }
-
+.btnmodif{
+	border: none;
+	border-radius: 0px;
+	color: #0f0f0f;
+	background-color: white;
+}
 #portfolio h2 {
 	text-align: center;
 }
-.portfolio-head {
+.portfolio-head  {
 	display: flex;
 	justify-content: center;
 	margin-bottom: 1em;
@@ -191,15 +211,23 @@ li:hover {
     text-decoration: none;
     cursor: pointer;
 }
+.Btn-modif {
+	border: none;
+
+}
 #Btn button {
 	border: none;
 	border-radius: 0px;
 	color: #0f0f0f;
 	background-color: white;
+	
 }
 #Btn button:hover {
 	background-color: white;
 	color: #0f0f0f;
+}
+.hiden {
+	display: none;
 }
 button {
 	border: 1px solid #1D6154  ;
@@ -286,3 +314,5 @@ main .contnair {
 main .contnair .heading {
 padding-bottom: 1rem;
 }
+
+
