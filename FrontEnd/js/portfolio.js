@@ -63,17 +63,156 @@ btnHotel.addEventListener("click", function(){
 
 
 
-for (let i = 0; i < portfolio.length; i++) {
-  // Création des balises
-  const sectionPortfolio = document.querySelector(".modal-content");
-  const sectionProjet = document.createElement("figure");
-  const imageElement = document.createElement("img");
-  imageElement.src = portfolio[i].imageUrl;
-  const nomElement = document.createElement("p");
-  nomElement.innerText = portfolio[i].title;
 
-  //Rattachement de nos balises au DOM
-  sectionPortfolio.appendChild(sectionProjet);
-  sectionProjet.appendChild(imageElement);
-  sectionProjet.appendChild(nomElement);
+const tok = window.localStorage.getItem("token");
+if (tok) {
+  console.log("test reussi");
+  document.querySelector(".login").innerText = "logOut";
+  let btnn = document.querySelector(".groupe");
+  btnn.style.display = "none";
+  const btn1 = document.querySelector("#myBtn1");
+  btn1.style.display = "block";
+  const btn2 = document.querySelector("#myBtn2");
+  btn2.style.display = "block";
+  const btn3 = document.querySelector("#myBtn3");
+  btn3.style.display = "block";
+  const editer =document.getElementById("edition");
+  editer.style.display = "flex";
+} else {
+  console.log("test non reussi");
+
+  const edit = document.getElementById("edition");
+  edit.style.display = "none";
 }
+
+const log = document.querySelector(".login");
+log.addEventListener("click", function () {
+  if (tok) {
+    localStorage.removeItem("token");
+    document.location = "./index.html";
+  } else {
+    document.location.href = "/FrontEnd/login.html";
+  }
+});
+
+
+
+
+
+	// Get the modal
+  const modal = document.getElementById("myModal");
+  // Get the button that opens the modal
+  const btn = document.getElementById("myBtn3");
+  // Get the <span> element that closes the modal
+  const span = document.getElementsByClassName("close")[0];
+  // When the user clicks on the button, open the modal
+  btn.onclick = function () {
+    modal.style.display = "block";
+  }
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  }
+  // When the user clicks anywhere outside of the modal, close it
+  Window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  
+	// Get the modal element
+  for (let i = 0; i < portfolio.length; i++) {
+    // Création des balises
+    const sectionPortfolio = document.querySelector(".modal-content");
+    const sectionProjet = document.createElement("figure");
+    const imageElement = document.createElement("img");
+    imageElement.src = portfolio[i].imageUrl;
+    const nomElement = document.createElement("p");
+    nomElement.innerText = "editer";
+    const iconesup = document.createElement("i");
+    iconesup.classList.add("fa-solid", "fa-trash-can");
+    //Rattachement de nos balises au DOM
+    sectionPortfolio.appendChild(sectionProjet);
+    sectionProjet.appendChild(imageElement);
+    sectionProjet.appendChild(nomElement);
+    sectionProjet.appendChild(iconesup);
+    
+
+  }
+
+
+
+
+
+  let  btnsupprimer = document.querySelectorAll(".fa-trash-can");
+  console.log(btnsupprimer);
+  for (let i = 0; i < btnsupprimer.length; i++) {
+    btnsupprimer[i].addEventListener("click", (event) => {
+      event.preventDefault();
+      console.log(event);
+      let id_supprimer = projets[i].id;
+      console.log(id_supprimer);
+      let monToken = localStorage.getItem("token");
+      let response = fetch(`http://localhost:5678/api/works/${id_supprimer}`, {
+        method: "DELETE",
+        headers: {
+          accept: "*/*",
+          Authorization: `Bearer ${monToken}`,
+        },
+      });
+      if (response.status == 200) {
+        alert("suppression reussi");
+        return false;
+        // if HTTP-status is 200-299
+        //alert("Photo supprimé avec succes");
+        // obtenir le corps de réponse (la méthode expliquée ci-dessous)
+      } else {
+        alert("Echec de suppression");
+      }
+    });
+  }
+
+
+  // Click sur le bouton de la modal modifier
+btn1-modal.addEventListener("click", function () {
+  modal_affich();
+});
+btn2-modal.addEventListener("click", function () {
+  modal_affich();
+});
+btn3-modal.addEventListener("click", function () {
+  modal_affich();
+});
+btn4-modal.addEventListener("click", function () {
+  modal_affich();
+});
+
+
+span.addEventListener("click", function () {
+  document.querySelector('.corps-modal').style.display = "grid";
+  document.querySelector('.ajout-photo').style.display = 'none';
+  document.querySelector('.titre-modal').innerText = 'Galerie photo'
+  document.querySelector('.valider-photo').style.display = 'none';
+  document.querySelector('.ajoutphoto').style.display = 'block';
+  document.querySelector('.supprimer-gallerie').style.display = 'block';
+
+  modal.style.display = "none";
+});
+window.addEventListener('click', function(event) {
+  if(event.target == modal){
+    modal.style.display = "none";
+  }
+})
+
+// GESTION DE LA MODAL DU BOUTON AJOUTER PHOTO
+const btn_ajoutphoto = document.querySelector(".ajoutphoto");
+btn_ajoutphoto.addEventListener("click", function (e) {
+  e.preventDefault();
+  document.querySelector('.titre-modal').innerText = 'Ajout photo'
+  console.log("click reussi");
+  document.querySelector('.ajout-photo').style.display = 'flex';
+  document.querySelector('.valider-photo').style.display = 'block';
+  document.querySelector('.ajoutphoto').style.display = 'none';
+  document.querySelector('.supprimer-gallerie').style.display = 'none';
+;
+});

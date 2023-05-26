@@ -12,8 +12,6 @@
   display: flex;
   flex-direction: column;
 }
-
-/* Log In */
 h2 {
   position: absolute;
   left: 100px;
@@ -22,7 +20,6 @@ h2 {
   height: 36px;
   text-align: center;
 }
-
 .tex-email {
   position: absolute;
   width: 46px;
@@ -42,7 +39,6 @@ h2 {
   height: 51px;
   left: 330px;
   top: 338px;
-
   background: #ffffff;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
@@ -52,7 +48,6 @@ h2 {
   height: 16px;
   left: 330px;
   top: 395px;
-
   font-family: "Work Sans";
   font-style: normal;
   font-weight: 500;
@@ -60,7 +55,6 @@ h2 {
   line-height: 16px;
   color: #e70a0a;
 }
-
 .tex-passwor {
   position: absolute;
   width: 139px;
@@ -72,17 +66,14 @@ h2 {
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
-
   color: #3d3d3d;
 }
-
 #user-password {
   position: absolute;
   width: 379px;
   height: 51px;
   left: 330px;
   top: 440px;
-
   background: #ffffff;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
@@ -92,7 +83,6 @@ h2 {
   height: 20px;
   left: 330px;
   top: 500px;
-
   font-family: "Work Sans";
   font-style: normal;
   font-weight: 500;
@@ -112,19 +102,16 @@ h2 {
   line-height: 17px;
   text-align: center;
 }
-
 .mot-de-passe-oublier {
   position: absolute;
   width: 200px;
   height: 16px;
   left: 445px;
   top: 600px;
-
   font-family: "Work Sans";
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
-
   color: #3d3d3d;
 }

@@ -12,19 +12,19 @@
 	<meta name="description" content="">
 	
 </head>
-<body>	
+<body>
 	<div id="edition" class="hiden">
 		<div><i class="fa-regular fa-pen-to-square"></i>Mode édition</div>
 		<button class="publiez">publiez les changements</button>
 	</div>
 <header>
-	<h1>Sophie Bluel <br><span>Architecte d'inteérieur</span></h1>
+	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
 			<li class="projets">projets</li>
 			<li class="contact">contact</li>
 			<li class="login"><a href="/FrontEnd/login.html">login</a></li>
-			<li class="logout hiden"><a href="./index.html">Log Out</a></li>
+			
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -33,14 +33,18 @@
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/Sophie-bluel.png" alt="photo de sohie Bluel">
-			<div id="Btn-modif" class="hiden btnmodif">
-				<a href=""><i class="fa-regular fa-pen-to-square"></i><button>modifier</button></a>
-			  </div>
+			<div id="myBtn1" class="btn hiden">  <i class="fa-regular fa-pen-to-square"></i><button>modifier</button></div>
+		<div id="modal1 hiden">
+			<div class="modif-image">
+				<i class="fa-sharp fa-regular fa-image"></i>
+				<label for="image">changer de photo</label>
+				<input type="file"  id="image">
+				<p>jpg, png : 4mo max</p>
+			</div>
+		</div>
 		</figure>
 		<article>
-			<div id="Btn-modiff" class="hiden btnmodif">
-				<a href=""><i class="fa-regular fa-pen-to-square"></i><button>modifier</button></a>
-			  </div>
+			<div id="myBtn2" class="btn hiden">  <i class="fa-regular fa-pen-to-square"></i><button>modifier</button></div>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
@@ -50,8 +54,7 @@
 	<section id="portfolio">
 		<div class="portfolio-head">
 			<h2>Mes Projets</h2>
-			<div id="myBtn" class="hiden" class="hiden">
-				<a href="">  <i class="fa-regular fa-pen-to-square"></i><button>modifier</button></a></div>
+			<div id="myBtn3" class="btn hiden">  <i class="fa-regular fa-pen-to-square"></i><button>modifier</button></div>
 		</div>
 		<div id="myModal" class="modal">
 			<span class="close">&times;</span>
@@ -59,6 +62,26 @@
 			<!-- Modal content -->
 			<div class="modal-content">
 			</div>
+			<div id="corps-modal">
+				<div class="ajout-photo">
+					<div class="zone-image">
+						<i class="fa-sharp fa-regular fa-image"></i>
+						<label for="image">+Ajouter photo</label>
+						<input type="file"  id="image">
+						<p>jpg, png : 4mo max</p>
+					</div>
+					<label for="">Titre</label>
+					<input type="text" class="titre-categorie" placeholder="Malt & Juniper - New York">
+					<label for="categorie">Categorie</label>
+					<input type="text" class="titre-categorie" placeholder="Bar & Restaurant">
+				</div>
+			</div>
+			<div class="btn-modal">
+				<button class="ajoutphoto">Ajouter photo</button>
+				<button class="valider-photo">Valider</button>
+				<button class="supprimer-gallerie">Supprimer la gallerie</button>
+			</div>
+		</div>
 		</div>
 		<script>
 
@@ -91,11 +114,10 @@
 <footer>
 	<nav>
 		<ul>
-			<li><a href="Mentions Légales">Mentions Légales</a></li>
+			<li>Mentions Légales</li>
 		</ul>
 	</nav>
 </footer>
 <script type="module" src="./js/portfolio.js"></script>
-<script type="module" src="./js/modale.js"></script>
 </body>
 </html>
