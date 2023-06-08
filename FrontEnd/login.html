@@ -8,32 +8,31 @@
 	<link rel="stylesheet" href="/FrontEnd/assets/loginn.css">
 	
 </head>
-<body>
-<header>
-	<h1>Sophie Bluel <br><span>Architecte d'inteérieur</span></h1>
-	<nav>
-<!DOCTYPE html>
-<html lang="fr">		<ul>
-			<li class="projets">projets</li>
-			<li class="contact">contact</li>
-			<li class="login"><a href="/FrontEnd/login.html">login</a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
-</header>
-<main>
-	<section id="login" >
-		<h2>Log in</h2>
-		<form class="form" action="#" method="POST">
+	<body id="loginpage">
+		<header>
+			<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+			<nav>
+				<ul>
+					<li>projets</li>
+					<li>contact</li>
+					<li><a href="../FrontEnd/index.html">login</a></li>
+					<li><img src="../FrontEnd/assets/icons/instagram.png" alt="Instagram"></li>
+				</ul>
+			</nav>
+		</header>
+		<form id="log" class="login-form" action="#" method="POST">
+	
+			<h2 class="main-title">Login</h2>
 			<div class="form-group">
-				<label for="user-email" class="tex-email">E-mail</label>
-				<input name="user-email" id="user-email" type="email" placeholder="email@example.com">
-				<span class="form-text-error hiden email-error">L'e-mail n'est pas correct</span>
+				<label for="email" class="tex-email">E-mail</label>
+				<input name="email" id="user-email" type="email" placeholder="email@example.com" >
+				<span class="form-text-error hiden user-email-error-msg">L'e-mail n'est pas correct</span>
 			</div>
 			<div class="form-group">
-				<label for="user-password" class="tex-passwor">Mot de passe</label>
-				<input name="user-password" id="user-password" type="password" placeholder="mot de passe">
-				<span class="form-text-error hiden  password-error">Le mot de passe n'est pas correct</span>
+				<label for="password" class="tex-passwor">Mot de passe</label>
+				<input name="password" id="user-password" type="password" placeholder="mot de passe">
+				<span class="form-text-error hiden  user-password-error-msg">Le mot de passe n'est pas correct</span>
+				<span class="form-text-error hiden  user-not-error-msg">Entrez des identifiants corrects</span>
 			</div>
 			<div>
 				<button class="submit-btn" type="submit">Se connecter</button>
@@ -42,9 +41,6 @@
 				<a href="">Mot de passe oublie</a>
 			</div>
 		</form>
-	</section>
-</main>
-
 <footer>
 	<nav>
 		<ul>
@@ -53,5 +49,6 @@
 	</nav>
 </footer>
 <script src="/FrontEnd/js/login.js" type="module"></script>
+<script src="/FrontEnd/js/portfolio.js" type="module"></script>
 </body>
 </html>
