@@ -1,35 +1,60 @@
-const $signInForm = document.querySelector('.form')
-const $userEmailInput = document.querySelector('#user-email')
-const $userEmailErrorMsg = document.querySelector('.email-error')
-const $userPasswordInput = document.querySelector('#user-password')
-const $userPasswordErrorMsg = document.querySelector('.password-error')
-const USER_EMAIL = "sophie.bluel@test.tld"
-const USER_PASSWORD = "S0phie"
-const checkUserEmailInput = () => {
-        const isUserEmailValid = $userEmailInput.value.toLowerCase() === USER_EMAIL
-        if (isUserEmailValid) {
-            $userEmailErrorMsg.classList.remove('tex-email')
-            $userEmailErrorMsg.classList.add('hiden')
-        } else {
-            $userEmailErrorMsg.classList.remove('hiden')
-        }
-        return isUserEmailValid
+
+
+const formulaireUser = document.querySelector(".login-form");
+formulaireUser.addEventListener("submit", function (event) {
+    event.preventDefault();
+    // Declaration des valeurs concernant l'utilisateur
+    const emailUser = "sophie.bluel@test.tld";
+    const passwordUser = "S0phie";
+    // Declaration de la balise contenant le mot d'erreur caché
+    const inputErrorEmail = document.querySelector('.user-email-error-msg');
+    const inputErrorPassword = document.querySelector('.user-password-error-msg');
+
+
+    // Declaration des entrées à valeurs unique
+    const email = event.target.querySelector("[name=email]").value;
+    const password = event.target.querySelector("[name=password]").value;
+    // Definition des données de l'utilisateur à l'entrée
+    const user = {
+        email: event.target.querySelector("[name=email]").value,
+        password: event.target.querySelector("[name=password]").value,
+    };
+    const stringUser = JSON.stringify(user);
+    // Enregistrement des données de l'utilisateur
+    window.localStorage.setItem("user", stringUser);
+    // Stockage du token
+
+    // Des données de l'utilisateur pour la verification
+    const userId = {
+        email: "sophie.bluel@test.tld",
+        password: "S0phie"
     }
-    const checkUserPasswordInput = () => {
-            const isUserPasswordValid = $userPasswordInput.value === USER_PASSWORD
-        
-            if (isUserPasswordValid) {
-                $userPasswordErrorMsg.classList.add('hiden')
-            } else {
-                $userPasswordErrorMsg.classList.remove('hiden')
-            }
-        
-            return isUserPasswordValid
+    const stringUserId = JSON.stringify(userId);
+    // Création de la charge utile au format JSON
+    const chargeUtile = JSON.stringify(user);
+    // Appel de la fonction fetch avec toutes les informations nécessaires
+    fetch("http://localhost:5678/api/users/login/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: chargeUtile
+    }).then((res)=>{
+        if (stringUser === stringUserId) {
+            window.location = "../FrontEnd/index.html";
         }
-        const isFormValid = () => checkUserEmailInput() && checkUserPasswordInput()
-        $signInForm.addEventListener('submit', function(e) {
-                e.preventDefault()
-                if (isFormValid()) {
-                    window.location = 'http://127.0.0.1:5500/Frontend/index.html'
-                }
-            })
+        else if (email !== emailUser) {
+            inputErrorEmail.style.display = "block";
+        }
+        else if (password !== passwordUser) {
+            inputErrorPassword.style.display = "block";
+        }
+        else if (password == null) {
+            alert("Veuillez entree l'email ou le passwor");
+        }
+        else {
+            alert("Veuillez entrez les mots identifiants");
+        }
+        return res.json()
+    } ).then((donnee) => window.localStorage.setItem('token', donnee.token));
+    
+});
+

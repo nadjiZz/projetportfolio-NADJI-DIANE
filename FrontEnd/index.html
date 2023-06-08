@@ -1,123 +1,148 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<title>Sophie Bluel - Architecte d'intérieur</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="./assets/style.css">
-	<script src="https://kit.fontawesome.com/174fd1685f.js" crossorigin="anonymous"></script>
-	<meta name="description" content="">
-	
-</head>
-<body>
-	<div id="edition" class="hiden">
-		<div><i class="fa-regular fa-pen-to-square"></i>Mode édition</div>
-		<button class="publiez">publiez les changements</button>
-	</div>
-<header>
-	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
-	<nav>
-		<ul>
-			<li class="projets">projets</li>
-			<li class="contact">contact</li>
-			<li class="login"><a href="/FrontEnd/login.html">login</a></li>
-			
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
-</header>
-<main>
-	<section id="introduction">
-		<figure>
-			<img src="./assets/images/Sophie-bluel.png" alt="photo de sohie Bluel">
-			<div id="myBtn1" class="btn hiden">  <i class="fa-regular fa-pen-to-square"></i><button>modifier</button></div>
-		<div id="modal1 hiden">
-			<div class="modif-image">
-				<i class="fa-sharp fa-regular fa-image"></i>
-				<label for="image">changer de photo</label>
-				<input type="file"  id="image">
-				<p>jpg, png : 4mo max</p>
-			</div>
-		</div>
-		</figure>
-		<article>
-			<div id="myBtn2" class="btn hiden">  <i class="fa-regular fa-pen-to-square"></i><button>modifier</button></div>
-			<h2>Designer d'espace</h2>
-			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
-		</article>
-	</section>
-	<section id="portfolio">
-		<div class="portfolio-head">
-			<h2>Mes Projets</h2>
-			<div id="myBtn3" class="btn hiden">  <i class="fa-regular fa-pen-to-square"></i><button>modifier</button></div>
-		</div>
-		<div id="myModal" class="modal">
-			<span class="close">&times;</span>
-				<h2>Gallerie Photo</h2>
-			<!-- Modal content -->
-			<div class="modal-content">
-			</div>
-			<div id="corps-modal">
-				<div class="ajout-photo">
-					<div class="zone-image">
-						<i class="fa-sharp fa-regular fa-image"></i>
-						<label for="image">+Ajouter photo</label>
-						<input type="file"  id="image">
-						<p>jpg, png : 4mo max</p>
-					</div>
-					<label for="">Titre</label>
-					<input type="text" class="titre-categorie" placeholder="Malt & Juniper - New York">
-					<label for="categorie">Categorie</label>
-					<input type="text" class="titre-categorie" placeholder="Bar & Restaurant">
-				</div>
-			</div>
-			<div class="btn-modal">
-				<button class="ajoutphoto">Ajouter photo</button>
-				<button class="valider-photo">Valider</button>
-				<button class="supprimer-gallerie">Supprimer la gallerie</button>
-			</div>
-		</div>
-		</div>
-		<script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sophie Bluel - Architecte d'intérieur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <script
+      src="https://kit.fontawesome.com/174fd1685f.js"
+      crossorigin="anonymous"
+    ></script>
+    <meta name="description" content="" />
+  </head>
+  <body>
+    <div id="edition" class="hiden">
+      <div><i class="fa-regular fa-pen-to-square"></i>Mode édition</div>
+      <button class="publiez">publiez les changements</button>
+    </div>
+    <header>
+      <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+      <nav>
+        <ul>
+          <li class="projets">projets</li>
+          <li class="contact">contact</li>
+          <li class="login"><a href="/FrontEnd/login.html">login</a></li>
+          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="introduction">
+        <figure>
+          <img
+            src="./assets/images/Sophie-bluel.png"
+            alt="photo de sohie Bluel"
+          />
+          <div id="myBtn1" class="btn hiden">
+            <i class="fa-regular fa-pen-to-square"></i><button>modifier</button>
+          </div>
+          <div id="modal1 hiden">
+            <div class="modif-image hiden"></div>
+          </div>
+        </figure>
+        <article>
+          <div id="myBtn2" class="btn hiden">
+            <i class="fa-regular fa-pen-to-square"></i><button>modifier</button>
+          </div>
+          <h2>Designer d'espace</h2>
+          <p>
+            Je raconte votre histoire, je valorise vos idées. Je vous accompagne
+            de la conception à la livraison finale du chantier.
+          </p>
+          <p>
+            Chaque projet sera étudié en commun, de façon à mettre en valeur les
+            volumes, les matières et les couleurs dans le respect de l’esprit
+            des lieux et le choix adapté des matériaux. Le suivi du chantier
+            sera assuré dans le souci du détail, le respect du planning et du
+            budget.
+          </p>
+          <p>
+            En cas de besoin, une équipe pluridisciplinaire peut-être constituée
+            : architecte DPLG, décorateur(trice)
+          </p>
+        </article>
+      </section>
+      <section id="portfolio">
+        <div class="portfolio-head">
+          <h2>Mes Projets</h2>
+          <div id="myBtn3" class="btn hiden">
+            <i class="fa-regular fa-pen-to-square"></i><button>modifier</button>
+          </div>
+        </div>
+        <div id="ensmble" class="ensemble hiden">
+          <div id="myModal" class="modal hiden">
+            <span class="close">&times;</span>
+            <h2>Gallerie Photo</h2>
+            <!-- Modal content -->
+            <div class="modal-content"></div>
+            <div class="btn-modal">
+              <button id="ajoutphoto">Ajouter photo</button>
+              <button id="supprimer-gallerie">Supprimer la gallerie</button>
+            </div>
+          </div>
+          <div id="myModall" class="ajout-photo modal">
+            <span><i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </span>
+            <span class="close">&times;</span>
+            <div class="zone-image">
+              <i class="fa-sharp fa-regular fa-image"></i>
+              <label for="image">+Ajouter photo</label>
+              <input type="file" id="image" />
+              <p>jpg, png : 4mo max</p>
+            </div>
+            <label for="titre">Titre</label>
+            <input
+              type="text"
+              class="titre-categorie"
+              placeholder="Malt & Juniper - New York"
+            />
+            <label for="categorie">Categorie</label>
+            <input
+              type="text"
+              class="titre-categorie"
+              placeholder="Bar & Restaurant"
+            />
+            <div class="trai"></div>
+            <button class="valider-photo">Valider</button>
+          </div>
+        </div>
+        <div class="group">
+          <button class="Tout">Tous</button>
+          <button class="Objet">Objets</button>
+          <button class="Appart">Appartements</button>
+          <button class="Hotel">Hôtels & Restaurants</button>
+        </div>
+        <div class="gallery"></div>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Vous avez un projet ? Discutons-en !</p>
+        <form action="#" method="post">
+          <label for="name">Nom</label>
+          <input type="text" name="name" id="name" />
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" />
+          <label for="message">Message</label>
+          <textarea name="message" id="message" cols="30" rows="10"></textarea>
+          <input type="submit" value="Envoyer" />
+        </form>
+      </section>
+    </main>
 
-		</script>
-
-		
-		<div class="group">
-			<button class="Tout">Tous</button>
-			<button class="Objet">Objets</button>
-			<button class="Appart">Appartements</button>
-			<button class="Hotel">Hôtels & Restaurants</button>
-		</div>
-		<div class="gallery"></div>
-	</section>
-	<section id="contact">
-		<h2>Contact</h2>
-		<p>Vous avez un projet ? Discutons-en !</p>
-		<form action="#" method="post">
-			<label for="name">Nom</label>
-			<input type="text" name="name" id="name">
-			<label for="email">Email</label>
-			<input type="email" name="email" id="email">
-			<label for="message">Message</label>
-			<textarea name="message" id="message" cols="30" rows="10"></textarea>
-			<input type="submit" value="Envoyer">
-		</form>
-	</section>
-</main>
-
-<footer>
-	<nav>
-		<ul>
-			<li>Mentions Légales</li>
-		</ul>
-	</nav>
-</footer>
-<script type="module" src="./js/portfolio.js"></script>
-</body>
+    <footer>
+      <nav>
+        <ul>
+          <li>Mentions Légales</li>
+        </ul>
+      </nav>
+    </footer>
+    <script type="module" src="./js/portfolio.js"></script>
+  </body>
 </html>

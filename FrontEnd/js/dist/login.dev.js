@@ -1,46 +1,56 @@
 "use strict";
 
-var $signInForm = document.querySelector('.form');
-var $userEmailInput = document.querySelector('#user-email');
-var $userEmailErrorMsg = document.querySelector('.email-error');
-var $userPasswordInput = document.querySelector('#user-password');
-var $userPasswordErrorMsg = document.querySelector('.password-error');
-var USER_EMAIL = "sophie.bluel@test.tld";
-var USER_PASSWORD = "S0phie";
+var formulaireUser = document.querySelector(".login-form");
+formulaireUser.addEventListener("submit", function (event) {
+  event.preventDefault(); // Declaration des valeurs concernant l'utilisateur
 
-var checkUserEmailInput = function checkUserEmailInput() {
-  var isUserEmailValid = $userEmailInput.value.toLowerCase() === USER_EMAIL;
+  var emailUser = "sophie.bluel@test.tld";
+  var passwordUser = "S0phie"; // Declaration de la balise contenant le mot d'erreur caché
 
-  if (isUserEmailValid) {
-    $userEmailErrorMsg.classList.remove('tex-email');
-    $userEmailErrorMsg.classList.add('hiden');
-  } else {
-    $userEmailErrorMsg.classList.remove('hiden');
-  }
+  var inputErrorEmail = document.querySelector('.user-email-error-msg');
+  var inputErrorPassword = document.querySelector('.user-password-error-msg'); // Declaration des entrées à valeurs unique
 
-  return isUserEmailValid;
-};
+  var email = event.target.querySelector("[name=email]").value;
+  var password = event.target.querySelector("[name=password]").value; // Definition des données de l'utilisateur à l'entrée
 
-var checkUserPasswordInput = function checkUserPasswordInput() {
-  var isUserPasswordValid = $userPasswordInput.value === USER_PASSWORD;
+  var user = {
+    email: event.target.querySelector("[name=email]").value,
+    password: event.target.querySelector("[name=password]").value
+  };
+  var stringUser = JSON.stringify(user); // Enregistrement des données de l'utilisateur
 
-  if (isUserPasswordValid) {
-    $userPasswordErrorMsg.classList.add('hiden');
-  } else {
-    $userPasswordErrorMsg.classList.remove('hiden');
-  }
+  window.localStorage.setItem("user", stringUser); // Stockage du token
+  // Des données de l'utilisateur pour la verification
 
-  return isUserPasswordValid;
-};
+  var userId = {
+    email: "sophie.bluel@test.tld",
+    password: "S0phie"
+  };
+  var stringUserId = JSON.stringify(userId); // Création de la charge utile au format JSON
 
-var isFormValid = function isFormValid() {
-  return checkUserEmailInput() && checkUserPasswordInput();
-};
+  var chargeUtile = JSON.stringify(user); // Appel de la fonction fetch avec toutes les informations nécessaires
 
-$signInForm.addEventListener('submit', function (e) {
-  e.preventDefault();
+  fetch("http://localhost:5678/api/users/login/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: chargeUtile
+  }).then(function (res) {
+    if (stringUser === stringUserId) {
+      window.location = "../FrontEnd/index.html";
+    } else if (email !== emailUser) {
+      inputErrorEmail.style.display = "block";
+    } else if (password !== passwordUser) {
+      inputErrorPassword.style.display = "block";
+    } else if (password == null) {
+      alert("Veuillez entree l'email ou le passwor");
+    } else {
+      alert("Veuillez entrez les mots identifiants");
+    }
 
-  if (isFormValid()) {
-    window.location = 'http://127.0.0.1:5500/Frontend/index.html';
-  }
+    return res.json();
+  }).then(function (donnee) {
+    return window.localStorage.setItem('token', donnee.token);
+  });
 });
