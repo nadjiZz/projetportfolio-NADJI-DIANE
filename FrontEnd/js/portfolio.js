@@ -2,9 +2,8 @@
 const reponse = await fetch("http://localhost:5678/api/works");
 const portfolio = await reponse.json();
 
+// Création des elements du DOM et ajout des travaux à la galerie
 function generer (portfolio) {
-
-
 for (let i = 0; i < portfolio.length; i++) {
   // Création des balises
   const sectionPortfolio = document.querySelector(".gallery");
@@ -21,12 +20,13 @@ for (let i = 0; i < portfolio.length; i++) {
 }
 }
 generer(portfolio);
+
+//Création de boutons de filtrages par categorie
 const btnTout = document.querySelector('.Tout');
 btnTout.addEventListener("click", function(){
     const Tout = portfolio.filter(function(figure){
         return figure.title
     })
-    console.log(Tout)
     document.querySelector(".gallery").innerHTML = "";
     generer(Tout)
 })
@@ -64,13 +64,14 @@ btnHotel.addEventListener("click", function(){
 
 
 
-const usertorage = window.localStorage.getItem("user");
-console.log(usertorage)
+const usertorage = window.localStorage.getItem("token");
 if (usertorage) {
   const deconect = document.querySelector(".login")
   deconect.innerText = "logout";
   deconect.addEventListener("click",function(){
-    window.localStorage.removeItem("user")
+    window.localStorage.removeItem("token")
+    deconect.removeAttribute('href')
+    deconect.setAttribute('href','/index.html')
   })
   const btnn = document.querySelector(".group");
   btnn.style.display = "none";
@@ -88,17 +89,6 @@ if (usertorage) {
       const editer =document.getElementById("edition");
       editer.style.display = "none";
     }
-
-// const log = document.querySelector(".submit-btn");
-// log.addEventListener("click", function () {
-//   if (log) {
-//     localStorage.removeItem("token");
-//     document.location = "http://127.0.0.1:5500/FrontEnd/index.html";
-//   } else {
-//     document.location.href = "http://127.0.0.1:5500/FrontEnd/login.html";
-//   }
-// });
-
 
 
 
@@ -153,6 +143,12 @@ for (let i = 0; i < portfolio.length; i++) {
   sectionProjet.appendChild(nomElement);
   sectionProjet.appendChild(iconesup);
 }
+
+window.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'|| e.key === 'Esc'){
+      closeMoadal(e)
+  }
+})
 	// // Get the modal
   // const modal = document.getElementsByClassName("ensemble")
   // const modal1 = document.getElementById("myModal");
@@ -197,62 +193,38 @@ for (let i = 0; i < portfolio.length; i++) {
 
   // }
 
-
-  const  btnsupprimer = document.querySelectorAll(".fa-trash-can");
-  for (let i = 0; i < btnsupprimer.length; i++) {
-    btnsupprimer[i].addEventListener("click", (event) => {
-      event.preventDefault();
-      console.log(event);
-      let id_supprimer = portfolio[i].id;
-      console.log(id_supprimer);
-      let monToken = localStorage.getItem("token");
-      let response = fetch(`http://localhost:5678/api/works/${id_supprimer}`, {
+// Suppression d'une image de la galerie
+  // const  btnsupprimer = document.querySelectorAll(".fa-trash-can");
+  // for (let i = 0; i < btnsupprimer.length; i++) {
+  //   btnsupprimer[i].addEventListener("click", (event) => {
+  //     event.preventDefault();
+  //     const id_supprimer = portfolio[i].id;
+  const galerie = document.querySelector('.gallerie')
+  galerie.addEventListener('click',function(e){
+    if(e.target.classList.closes)
+  })
+      const monToken = localStorage.getItem("token");
+      // Envoie d'une requete pour supprimer l'element 
+      fetch(`http://localhost:5678/api/works/${id_supprimer}`, {
         method: "DELETE",
-        headers: {
-          accept: "*/*",
-          Authorization: `Bearer ${monToken}`,
-        },
-      });
-      if (response) {
+        headers: {"Authorization": `Bearer ${monToken}`}
+    }).then(function(sup){
+      if (sup.ok) {
         alert("Photo supprimé avec succes");
       } 
       else {
         alert("Echec de suppression");
       }
+    })
+   
     });
   }
 
+// GESTION DE LA MODAL DU BOUTON AJOUTER PHOTO
+const btn_ajoutphoto = document.querySelector(".ajout-photo");
+btn_ajoutphoto.addEventListener("click", function (e) {
+  e.preventDefault();
+  document.querySelector('.ajout-photo').style.display = 'flex';
+  document.querySelector('.valider-photo').style.display = 'block';
 
-  // Click sur le bouton de la modal modifier
-// btn1.addEventListener("click", function () {
-//   modal1_affich();
-// });
-
-
-// span.addEventListener("click", function () {
-//   document.querySelector('.corps-modal').style.display = "grid";
-//   document.querySelector('.ajout-photo').style.display = 'none';
-//   document.querySelector('.titre-modal').innerText = 'Galerie photo'
-//   document.querySelector('.valider-photo').style.display = 'none';
-//   document.querySelector('.ajoutphoto').style.display = 'block';
-//   document.querySelector('.supprimer-gallerie').style.display = 'block';
-//   modal.style.display = "none";
-// });
-// window.addEventListener('click', function(event) {
-//   if(event.target == modal){
-//     modal.style.display = "none";
-//   }
-// })
-
-// // GESTION DE LA MODAL DU BOUTON AJOUTER PHOTO
-// const btn_ajoutphoto = document.querySelector(".ajoutphoto");
-// btn_ajoutphoto.addEventListener("click", function (e) {
-//   e.preventDefault();
-//   document.querySelector('.titre-modal').innerText = 'Ajout photo'
-//   console.log("click reussi");
-//   document.querySelector('.ajout-photo').style.display = 'flex';
-//   document.querySelector('.valider-photo').style.display = 'block';
-//   document.querySelector('.ajoutphoto').style.display = 'none';
-//   document.querySelector('.supprimer-gallerie').style.display = 'none';
-// ;
-// });
+});
