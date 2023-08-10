@@ -24,6 +24,7 @@ generer(portfolio);
 //Création de boutons de filtrages par categorie
 const btnTout = document.querySelector('.Tout');
 btnTout.addEventListener("click", function(){
+  const position = document.querySelector('.Tout')
     const Tout = portfolio.filter(function(figure){
         return figure.title
     })
@@ -64,21 +65,64 @@ btnHotel.addEventListener("click", function(){
 
 
 
-// Recuperation du token
-const usertorage = window.localStorage.getItem("user");
-const monToken=window.localStorage.getItem("token");
-// localStorage.setItem('token',JSON.stringify('token'))
-if (usertorage && monToken) {
+// // Recuperation du token
+// const usertorage = window.localStorage.getItem("user");
+// const token=window.localStorage.getItem("token");
+// // localStorage.setItem('token',JSON.stringify('token'))
+// if (usertorage && token) {
+//   const deconect = document.querySelector(".login")
+//   deconect.innerText = "logaout";
+
+//   const btnn = document.querySelector(".group");
+//     btnn.style.display = "none";
+//     const btn1 = document.querySelector("#myBtn1");
+//     btn1.style.display = "block";
+//     const btn2 = document.querySelector("#myBtn2");
+//     btn2.style.display = "block";
+//     const btn3 = document.querySelector("#myBtn3");
+//     btn3.style.display = "block";
+//     const editer =document.getElementById("edition");
+//     editer.style.display = "flex";
+
+//   deconect.addEventListener("logout", (event) => {
+//     window.localStorage.removeItem("token")
+
+//     if( token === null ){
+//       console.log("valider teste")
+//     } 
+  
+//   });
+  
+
+//   deconect.addEventListener("click",function(){
+//   sessionStorage.removeItem('token');
+//   sessionStorage.removeItem('userId');
+//   document.location.href="index.html"
+//   deconect.style.displaye = "none"
+//   btnn.style.display = "block";
+//   btn1.style.display = "none";
+//   const btn2 = document.querySelector("#myBtn2");
+//   btn2.style.display = "none";
+//   const btn3 = document.querySelector("#myBtn3");
+//   btn3.style.display = "none";
+//   editer.style.display = "none";
+//   // localStorage.removeItem("token");
+//   })
+//     } else {
+//       const editer =document.getElementById("edition");
+//       editer.style.display = "none";
+//     }
+
+
+const token = window.localStorage.getItem("token");
+if (token) {
   const deconect = document.querySelector(".login")
-  deconect.innerText = "logaout";
-  deconect.addEventListener("logout", (event) => {
+  deconect.innerText = "logout";
+  deconect.addEventListener("click",function(){
     window.localStorage.removeItem("token")
-
-    if( token === null ){
-      console.log("valider teste")
-    } 
-
-  });
+    deconect.removeAttribute('href')
+    deconect.setAttribute('href','/FrontEnd/index.html')
+  })
   const btnn = document.querySelector(".group");
   btnn.style.display = "none";
   const btn1 = document.querySelector("#myBtn1");
@@ -89,52 +133,12 @@ if (usertorage && monToken) {
   btn3.style.display = "block";
   const editer =document.getElementById("edition");
   editer.style.display = "flex";
-
-  deconect.addEventListener("click",function(){
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('userId');
-    document.location.href="index.html"
-    deconect.style.displaye = "none"
-  btnn.style.display = "blck";
-  btn1.style.display = "none";
-  const btn2 = document.querySelector("#myBtn2");
-  btn2.style.display = "none";
-  const btn3 = document.querySelector("#myBtn3");
-  btn3.style.display = "none";
-  editer.style.display = "none";
-  localStorage.removeItem("token");
-  })
+  // localStorage.removeItem("token");
+    
     } else {
       const editer =document.getElementById("edition");
       editer.style.display = "none";
     }
-
-
-// const usertorage = window.localStorage.getItem("token");
-// if (usertorage) {
-//   const deconect = document.querySelector(".login")
-//   deconect.innerText = "logout";
-//   deconect.addEventListener("click",function(){
-//     window.localStorage.removeItem("token")
-//     deconect.removeAttribute('href')
-//     deconect.setAttribute('href','/index.html')
-//   })
-//   const btnn = document.querySelector(".group");
-//   btnn.style.display = "none";
-//   const btn1 = document.querySelector("#myBtn1");
-//   btn1.style.display = "block";
-//   const btn2 = document.querySelector("#myBtn2");
-//   btn2.style.display = "block";
-//   const btn3 = document.querySelector("#myBtn3");
-//   btn3.style.display = "block";
-//   const editer =document.getElementById("edition");
-//   editer.style.display = "flex";
-//   localStorage.removeItem("token");
-    
-//     } else {
-//       const editer =document.getElementById("edition");
-//       editer.style.display = "none";
-//     }
 
 
 
@@ -217,12 +221,12 @@ for (let i = 0; i < portfolio.length; i++) {
 
 
 
-// window.addEventListener('keydown', function(e){
-//   if(e.key === 'Escape'|| e.key === 'Esc'){
-//       closeMoadal(e)
-//       console.log(e)
-//   }
-// })
+window.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'|| e.key === 'Esc'){
+      closeMoadal(e)
+      console.log(e)
+  }
+})
 	
   // // When the user clicks on <span> (x), close the modal
   // span.onclick = function () {

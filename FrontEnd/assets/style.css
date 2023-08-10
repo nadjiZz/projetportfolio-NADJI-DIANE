@@ -241,18 +241,19 @@ a {
 .portfolio-head {
   display: flex;
   justify-content: center;
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
   gap: 0.5rem;
 }
 .portfolio-head button {
   border: none;
+  padding: 1rem;
   border-radius: 0px;
   color: #0f0f0f;
   background-color: white;
 }
 .portfolio-head button:hover {
   background-color: white;
-  color: #0f0f0f;
+  color: #801f1f;
 }
 /*modal*/
 .ensemble {
@@ -431,7 +432,8 @@ button {
   border: 1px solid #1d6154;
   border-radius: 1rem;
   color: #1d6154;
-  margin: 0.5rem;
+  margin: .5rem;
+  padding: .5rem;
 }
 button:hover {
   background-color: #1d6154;
@@ -511,12 +513,39 @@ main .contnair .heading {
   padding-bottom: 1rem;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* la partie du css de login */
-#loginpage {
+
+#loginAll {
+  display: flex;
+  justify-content: center;
+}
+#loginPage {
   background: #fffef8;
   justify-content: space-between;
   align-items: center;
-
+  width: 400px;
+}
+#loginPage h2 {
+  text-align: center;
 }
 .form-group {
   position: relative;
@@ -556,10 +585,9 @@ main .contnair .heading {
 }
 .user-email-error-msg {
   position: absolute;
-  width: 150px;
-  height: 16px;
   left: 35%;
-  top: 52%;
+  top: 100%;
+  text-align: center;
   color: #e70a0a;
 }
 .tex-passwor {
