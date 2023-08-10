@@ -511,12 +511,39 @@ main .contnair .heading {
   padding-bottom: 1rem;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* la partie du css de login */
-#loginpage {
+
+#loginAll {
+  display: flex;
+  justify-content: center;
+}
+#loginPage {
   background: #fffef8;
   justify-content: space-between;
   align-items: center;
-
+  width: 400px;
+}
+#loginPage h2 {
+  text-align: center;
 }
 .form-group {
   position: relative;
@@ -556,10 +583,9 @@ main .contnair .heading {
 }
 .user-email-error-msg {
   position: absolute;
-  width: 150px;
-  height: 16px;
   left: 35%;
-  top: 52%;
+  top: 100%;
+  text-align: center;
   color: #e70a0a;
 }
 .tex-passwor {
