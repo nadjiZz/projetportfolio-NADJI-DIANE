@@ -1,17 +1,12 @@
 
 
-const formulaireUser = document.querySelector(".login-form");
+const formulaireUser = document.querySelector(".formulaireLogin");
 formulaireUser.addEventListener("submit", function (event) {
     event.preventDefault();
-    // Declaration des valeurs concernant l'utilisateur
     const emailUser = "sophie.bluel@test.tld";
     const passwordUser = "S0phie";
-    // Declaration de la balise contenant le mot d'erreur caché
     const inputErrorEmail = document.querySelector('.user-email-error-msg');
     const inputErrorPassword = document.querySelector('.user-password-error-msg');
-
-
-    // Declaration des entrées à valeurs unique
     const email = event.target.querySelector("[name=email]").value;
     const password = event.target.querySelector("[name=password]").value;
     // Definition des données de l'utilisateur à l'entrée
@@ -57,4 +52,41 @@ formulaireUser.addEventListener("submit", function (event) {
     } ).then((donnee) => window.localStorage.setItem('token', donnee.token));
     
 });
+
+
+// document.formLogin.addEventListener('submit', async function (e) {
+//     e.preventDefault();
+    
+//     const user = {
+//         email: this.email.value,
+//         password: this.password.value
+//     };
+
+    // console.log("email",this.email.value)
+    // console.log("password",this.password.value)
+//     if(this.email.value == "" || this.password.value == ""){
+//         alert("un des champs est vide")
+//     }else{
+
+  
+
+//     const res = await fetch('http://localhost:5678/api/users/login', {
+//         method: "post",
+//         headers: {
+//             "Content-type": "application/json",
+//         },
+//         body: JSON.stringify(user),
+//     });
+
+//     const data = await res.json();
+
+//     sessionStorage.setItem('userId',data.userId);
+//     sessionStorage.setItem('token', data.token);
+//     if (data.token) {
+//        document.location.href="./index.html";
+//     } else {
+//         alert("Le mot de passe ou/et l'identifiant n'est pas corrects");
+//     }
+// }    
+// });
 

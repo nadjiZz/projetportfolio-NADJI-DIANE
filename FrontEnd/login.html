@@ -1,53 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sophie Bluel - Architecte d'intérieur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/FrontEnd/assets/style.css"/>
+    <script
+      src="https://kit.fontawesome.com/174fd1685f.js"
+      crossorigin="anonymous"
+    ></script>
+    <meta name="description" content=""/>
+  </head>
+  <body>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sophie Bluel - Architecte d'intérieur-login</title>
-    <link rel="stylesheet" href="/FrontEnd/assets/style.css">
-	<link rel="stylesheet" href="/FrontEnd/assets/logincss">
-	
-</head>
-	<body id="loginpage">
-		<header>
-			<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
-			<nav>
-				<ul>
-					<li>projets</li>
-					<li>contact</li>
-					<li><a href="../FrontEnd/index.html">login</a></li>
-					<li><img src="../FrontEnd/assets/icons/instagram.png" alt="Instagram"></li>
-				</ul>
-			</nav>
-		</header>
-		<form id="log" class="login-form" action="#" method="POST">
-			<h2 class="main-title">Login</h2>
-			<div class="form-group">
-				<label for="email" class="tex-email">E-mail</label>
-				<input name="email" id="user-email" type="email" placeholder="email@example.com" >
-				<span class="form-text-error hiden user-email-error-msg">L'e-mail n'est pas correct</span>
+    <header>
+      <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+      <nav>
+        <ul>
+          <li class="projets">projets</li>
+          <li class="contact">contact</li>
+          <li class="login"><a href="/FrontEnd/login.html">login</a></li>
+          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+        </ul>
+      </nav>
+    </header>
+	<main>
+		<div>
+			<h2>Log in</h2>
+			<form name="formulaireLogin">
+				<div class="form">
+					<label>E-mail</label>
+					<input type="email" name="email" id="email" required>
+				</div>
+				<br>
+				<div class="form">
+					<label>Mot de passe</label>
+					<input type="password" name="password" id="password" required>
+				</div>
+				<div class="bouttonSeConnecter">
+					<button type="submit" class="buttonSubmit">Se connecter</button>
+				</div>
+			</form>
+			<div class="lienMotDePasseOublie">
+				<a href="#">Mot de passe oublié</a>
 			</div>
-			<div class="form-group">
-				<label for="password" class="tex-passwor">Mot de passe</label>
-				<input name="password" id="user-password" type="password" placeholder="mot de passe">
-				<span class="form-text-error hiden  user-password-error-msg">Le mot de passe n'est pas correct</span>
-				<span class="form-text-error hiden  user-not-error-msg">Entrez des identifiants corrects</span>
-			</div>
-			<div>
-				<button class="submit-btn" type="submit">Se connecter</button>
-			</div>
-			<div class="mot-de-passe-oublier">
-				<a href="">Mot de passe oublie</a>
-			</div>
-		</form>
-<footer>
-	<nav>
-		<ul>
-			<li><a href="Mentions Légales">Mentions Légales</a></li>
-		</ul>
-	</nav>
-</footer>
-<script src="/FrontEnd/js/login.js" type="module"></script>
-<script src="/FrontEnd/js/portfolio.js" type="module"></script>
+		</div>
+	</main>
+
+	<footer>
+		<nav>
+			<ul>
+				<li>Mentions Légales</li>
+			</ul>
+		</nav>
+	</footer>
 </body>
 </html>
