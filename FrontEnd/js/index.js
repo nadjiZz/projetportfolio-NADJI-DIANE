@@ -65,34 +65,34 @@ btnHotel.addEventListener("click", function(){
 
 
 
-// // Recuperation du token
-// const usertorage = window.localStorage.getItem("user");
-// const token=window.localStorage.getItem("token");
-// // localStorage.setItem('token',JSON.stringify('token'))
-// if (usertorage && token) {
-//   const deconect = document.querySelector(".login")
-//   deconect.innerText = "logaout";
+// Recuperation du token
+const usertorage = window.localStorage.getItem("user");
+const token=window.localStorage.getItem("token");
+// localStorage.setItem('token',JSON.stringify('token'))
+if (usertorage && token) {
+  const deconect = document.querySelector(".login")
+  deconect.innerText = "logaout";
 
-//   const btnn = document.querySelector(".group");
-//     btnn.style.display = "none";
-//     const btn1 = document.querySelector("#myBtn1");
-//     btn1.style.display = "block";
-//     const btn2 = document.querySelector("#myBtn2");
-//     btn2.style.display = "block";
-//     const btn3 = document.querySelector("#myBtn3");
-//     btn3.style.display = "block";
-//     const editer =document.getElementById("edition");
-//     editer.style.display = "flex";
+  const btnn = document.querySelector(".group");
+    btnn.style.display = "none";
+    const btn1 = document.querySelector("#myBtn1");
+    btn1.style.display = "block";
+    const btn2 = document.querySelector("#myBtn2");
+    btn2.style.display = "block";
+    const btn3 = document.querySelector("#myBtn3");
+    btn3.style.display = "block";
+    const editer =document.getElementById("edition");
+    editer.style.display = "flex";
 
-//   deconect.addEventListener("logout", (event) => {
-//     window.localStorage.removeItem("token")
+  deconect.addEventListener("logout", (event) => {
+    window.localStorage.removeItem("token")
 
-//     if( token === null ){
-//       console.log("valider teste")
-//     } 
+    if( token === null ){
+      console.log("valider teste")
+    } 
   
-//   });
-  
+  });
+}
 
 //   deconect.addEventListener("click",function(){
 //   sessionStorage.removeItem('token');
@@ -114,31 +114,31 @@ btnHotel.addEventListener("click", function(){
 //     }
 
 
-const token = window.localStorage.getItem("token");
-if (token) {
-  const deconect = document.querySelector(".login")
-  deconect.innerText = "logout";
-  deconect.addEventListener("click",function(){
-    window.localStorage.removeItem("token")
-    deconect.removeAttribute('href')
-    deconect.setAttribute('href','/FrontEnd/index.html')
-  })
-  const btnn = document.querySelector(".group");
-  btnn.style.display = "none";
-  const btn1 = document.querySelector("#myBtn1");
-  btn1.style.display = "block";
-  const btn2 = document.querySelector("#myBtn2");
-  btn2.style.display = "block";
-  const btn3 = document.querySelector("#myBtn3");
-  btn3.style.display = "block";
-  const editer =document.getElementById("edition");
-  editer.style.display = "flex";
-  // localStorage.removeItem("token");
+// const token = window.localStorage.getItem("token");
+// if (token) {
+//   const deconect = document.querySelector(".login")
+//   deconect.innerText = "logout";
+//   deconect.addEventListener("click",function(){
+//     window.localStorage.removeItem("token")
+//     deconect.removeAttribute('href')
+//     deconect.setAttribute('href','/FrontEnd/index.html')
+//   })
+//   const btnn = document.querySelector(".group");
+//   btnn.style.display = "none";
+//   const btn1 = document.querySelector("#myBtn1");
+//   btn1.style.display = "block";
+//   const btn2 = document.querySelector("#myBtn2");
+//   btn2.style.display = "block";
+//   const btn3 = document.querySelector("#myBtn3");
+//   btn3.style.display = "block";
+//   const editer =document.getElementById("edition");
+//   editer.style.display = "flex";
+//   // localStorage.removeItem("token");
     
-    } else {
-      const editer =document.getElementById("edition");
-      editer.style.display = "none";
-    }
+//     } else {
+//       const editer =document.getElementById("edition");
+//       editer.style.display = "none";
+//     }
 
 
 
@@ -147,12 +147,12 @@ const modal = document.getElementById ("ensmble")
 const modall = document.getElementById("myModal");
 const modalll = document.getElementById("myModall")
 // Get the button that opens the modal
-const btn3 = document.getElementById("myBtn3");
+const Btn3 = document.getElementById("myBtn3")
 const btn4 = document.getElementById("ajoutphoto")
 // Get the <span> element that closes the modal
 const quitter = document.querySelectorAll(".close, .closer")[0];
 // When the user clicks on the button, open the modal
-btn3.onclick = function () {
+Btn3.onclick = function () {
   modal.style.display = "block";
   modall.style.display = "block";
   modalll.style.display = "none"
@@ -172,7 +172,19 @@ modal.onclick = function (event) {
     modal.style.display = "none";
   }
 }
-
+// Quitter la modal part la touche Esc
+window.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'|| e.key === 'Esc'){
+    modal.style.display = "none";
+  }
+})
+const retour = document.getAnimations(".fa-arrow-left");
+retour.onclick = function () {
+  modal.style.display = "block";
+  modall.style.display = "block";
+  modalll.style.display = "none"
+}
+console.log(retour)
 // Get the modal element
 for (let i = 0; i < portfolio.length; i++) {
   // Création des balises
@@ -219,69 +231,32 @@ for (let i = 0; i < portfolio.length; i++) {
   sectionProjet.appendChild(iconsup);
 }
 
+// Suppression d'une image de la galerie modale et de la base de données
+const GalerieModal = document.querySelector(".modal-content");
 
-
-window.addEventListener('keydown', function(e){
-  if(e.key === 'Escape'|| e.key === 'Esc'){
-      closeMoadal(e)
-      console.log(e)
-  }
+GalerieModal.addEventListener('click', function(d){
+    // Verifier si l'element cliqué est une icone "Delete"
+    if(d.target.classList.contains('fa-trash-can')){
+        // Recuperation de l'element figure, parent correspondant
+        const figure = d.target.closest('figure');
+        // Récuperation de l'ID de l'element figure à supprimer
+        const workId = figure.getAttribute('id');
+        const getTokent = window.sessionStorage.getItem('token')
+        // Envoie d'une requete DELETE pour supprimer l'element 
+        fetch(`http://localhost:5678/api/works/${workId}`, {
+            method: 'DELETE',
+            headers: {"Authorization": `Bearer ${getTokent}`}
+        }).then(function(res){
+            if(res.ok){
+                //Affiche les projets de la gallerie modale
+                generationTravaux()
+                //Affiche les projets de la gallerie modale de le page d'accueil
+                genererGallerieModal()
+            }else{
+                console.error("Erreur survenue lors de la suppression de l\'element")
+            }
+        }).catch(function(error){
+            console.error("Erreur survenue lors de la suppression de l\'element", error)
+        })
+    }
 })
-	
-  // // When the user clicks on <span> (x), close the modal
-  // span.onclick = function () {
-  //   modal.style.display = "none";
-  // }
-  // // When the user clicks anywhere outside of the modal, close it
-  // Window.onclick = function (event) {
-  //   if (event.target == modal) {
-  //     modal.style.display = "none";
-  //   }
-  // }
-  
-	
-
-// //Suppression d'une image de la galerie
-//   const  btnsupprimer = document.querySelectorAll(".fa-trash-can");
-//   for (let i = 0; i < btnsupprimer.length; i++) {
-//     btnsupprimer[i].addEventListener("click", (event) => {
-//       event.preventDefault();
-//       const id_supprimer = portfolio[i].id;
-//   const galerie = document.querySelector('.gallerie')
-//   galerie.addEventListener('click',function(e){
-//     if(e.target.classList.closes)
-//       })
-//    })
-//   }
-
-  // Envoie d'une requete pour supprimer l'element 
-
-      
-
-
-
-//       const monToken = localStorage.getItem("token");
-//       // Envoie d'une requete pour supprimer l'element 
-//       fetch(`http://localhost:5678/api/works/${id_supprimer}`, {
-//         method: "DELETE",
-//         headers: {"Authorization": `Bearer ${monToken}`}
-//     }).then(function(sup){
-//       if (sup.ok) {
-//         alert("Photo supprimé avec succes");
-//       } 
-//       else {
-//         alert("Echec de suppression");
-//       }
-//     })
-   
-//     });
-//   }
-
-// // GESTION DE LA MODAL DU BOUTON AJOUTER PHOTO
-// const btn_ajoutphoto = document.querySelector(".ajout-photo");
-// btn_ajoutphoto.addEventListener("click", function (e) {
-//   e.preventDefault();
-//   document.querySelector('.ajout-photo').style.display = 'flex';
-//   document.querySelector('.valider-photo').style.display = 'block';
-
-// });

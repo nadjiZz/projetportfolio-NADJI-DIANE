@@ -7,8 +7,8 @@ formulaireUser.addEventListener("submit", function (connexion) {
     const passwordUser = "S0phie";
     const inputErrorEmail = document.querySelector('.user-email-error-msg');
     const inputErrorPassword = document.querySelector('.user-password-error-msg');
-    // const email = connexion.target.querySelector("[name=email]").value;
-    // const password = connexion.target.querySelector("[name=password]").value;
+    const email = connexion.target.querySelector("[name=email]").value;
+    const password = connexion.target.querySelector("[name=password]").value;
     // Definition des données de l'utilisateur à l'entrée
     const user = {
         email: connexion.target.querySelector("[name=email]").value,
@@ -34,7 +34,7 @@ formulaireUser.addEventListener("submit", function (connexion) {
         body: chargeUtile
     }).then((res)=>{
         if (stringUser === stringUserId) {
-            window.location = "../index.html";
+            window.location = "/FrontEnd/index.html";
         }
         else if (email !== emailUser) {
             inputErrorEmail.style.display = "block";

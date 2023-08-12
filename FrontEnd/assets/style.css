@@ -108,7 +108,6 @@ section {
 #edition {
   padding: 1rem 0 1rem 0;
   color: white;
-  display: flex;
   background-color: black;
   align-items: center;
   justify-content: center;
@@ -255,6 +254,10 @@ a {
   background-color: white;
   color: #801f1f;
 }
+.group {
+  display: flex;
+  justify-content: center;
+}
 /*modal*/
 .ensemble {
   position: fixed;
@@ -286,6 +289,13 @@ a {
   background-color: #fefefe;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.5);
   padding: 5px;
+  -webkit-transform:3px;
+  -moz-transform:3px;
+  -ms-transform:3px;
+  -o-transform:3px;
+}
+.modal h2 {
+  margin-bottom: 1.5rem;
 }
  .modal-content {
   position: relative;
@@ -320,30 +330,27 @@ a {
 #ajoutphoto {
   color: white;
   background-color: #1d6154;
-  width: 40%;
   padding: 0.5rem 2.5rem 0.5rem 2.5rem;
 }
 .ajout-photo {
-  display: flex;
-  flex-direction: column;
-  height: 60%;
-  width: 60%;
-  position: absolute;
-  left: 20%;
-  top: 30%;
-}
+padding: 4rem;
+} 
 .trai {
   border-bottom: 2px solid black;
-  width: 100%;
+
 }
 .valider-photo {
   border: none;
-  color: aliceblue;
   width: 30%;
   margin: 1rem;
-  background-color: rgb(62, 63, 63);
-  font-size: large;
-}
+  background-color: rgb(114, 115, 115);
+  font-size: large; 
+  color: aliceblue;
+  padding: 0.5rem 2.5rem;
+  position: absolute;
+  left: 30%;
+  top: 75%;
+  }
 .modal figure {
   position: relative;
 }
@@ -357,8 +364,13 @@ a {
   padding: 5px;
   border-radius: 3px;
   cursor: pointer;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
 }
 .close, .closer {
+  z-index: 1;
   padding: 8px 10px;
   border: none;
   border-radius: 5px;
@@ -368,23 +380,20 @@ a {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: #ff365e;
 }
 .fa-arrow-left {
+  z-index: 1;
   padding: 8px 10px;
   border: none;
-  border-radius: 5px;
-  color: rgb(248, 19, 19);
+  color: black;
   font-size: 20px;
   cursor: pointer;
   position: absolute;
   top: 10px;
-  right: 90px;
-  background-color: #e8f1f7;
 }
-.close:hover,
-.close:focus {
-  color: #000;
+.close:hover,.closer:hover
+.close:focus, .close:focus {
+  color: #940505;
   text-decoration: none;
   cursor: pointer;
 }
@@ -396,7 +405,12 @@ a {
   align-items: center;
   justify-content: center;
   display: flex;
-  width: 90%;
+  height: 10rem;
+}
+.description {
+  display: flex;
+  flex-direction: column;
+
 }
 .zone-image input {
   display: none;
@@ -411,10 +425,8 @@ a {
 }
 .zone-image i {
   font-size: 5rem;
-  display: none;
 }
 .titre-categorie {
-  width: 90%;
   height: 3rem;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.501);
   margin: 0.5rem 0 1rem 0;
@@ -427,15 +439,14 @@ a {
 .hiden {
   display: none;
 }
-
 button {
   border: 1px solid #1d6154;
   border-radius: 1rem;
   color: #1d6154;
   margin: .5rem;
-  padding: .5rem;
+  padding: .5rem 1rem;
 }
-button:hover {
+button:hover, button:focus {
   background-color: #1d6154;
   color: white;
 }
@@ -466,7 +477,6 @@ button:hover {
   display: flex;
   flex-direction: column;
 }
-
 #contact input {
   height: 50px;
   font-size: 1.2em;
