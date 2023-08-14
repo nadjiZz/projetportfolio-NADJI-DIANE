@@ -48,10 +48,12 @@
           </div>
         </figure>
         <article>
-          <div id="myBtn2" class="btn hiden">
-            <i class="fa-regular fa-pen-to-square"></i><button>modifier</button>
+          <div class="designer">
+            <h2>Designer d'espace</h2>
+            <div id="myBtn2" class="btn hiden">
+              <i class="fa-regular fa-pen-to-square"></i><button>modifier</button>
+            </div>
           </div>
-          <h2>Designer d'espace</h2>
           <p>
             Je raconte votre histoire, je valorise vos idées. Je vous accompagne
             de la conception à la livraison finale du chantier.
@@ -78,7 +80,7 @@
         </div>
         <div id="ensmble" class="ensemble hiden">
           <div id="myModal" class="modal hiden">
-            <span class="close">&times;</span>
+            <span id="close">&times;</span>
             <h2 class="index">Gallerie Photo</h2>
             <!-- Modal content -->
             <div class="modal-content"></div>
@@ -89,9 +91,9 @@
           </div>
           <div id="myModall" class="ajout-photo modal">
             <h2 class="index">Ajouter photo</h2>
-            <span><i class="fa fa-arrow-left" aria-hidden="true"></i>
+            <span><i id="left" class="fa fa-arrow-left" aria-hidden="true"></i>
             </span>
-            <span class="closer">&times;</span>
+            <span id="closer">&times;</span>
             <div class="zone-image">
               <i class="fa-sharp fa-regular fa-image"></i>
               <label for="image">+Ajouter photo</label>
@@ -114,8 +116,7 @@
           <button class="Appart">Appartements</button>
           <button class="Hotel">Hôtels & Restaurants</button>
         </div>
-        <div class="gallery">
-          
+        <div class="gallery">       
         </div>
       </section>
       <section id="contact">
