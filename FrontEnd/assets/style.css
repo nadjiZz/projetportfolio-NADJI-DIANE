@@ -364,7 +364,10 @@ padding: 4rem;
 .modal figure {
   position: relative;
 }
-.fa-trash-can {
+.iconSup {
+  background-color: #e70a0a;
+}
+.fa-trash-can, .iconSup {
   position: absolute;
   top: 1px;
   font-size: 100%;

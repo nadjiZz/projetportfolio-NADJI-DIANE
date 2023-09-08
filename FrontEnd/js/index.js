@@ -68,9 +68,9 @@ btnHotel.addEventListener("click", function(){
 // Recuperation du token
 const usertorage = window.localStorage.getItem("user");
 const token=window.localStorage.getItem("token");
-localStorage.setItem('token',JSON.stringify('token'))
+localStorage.setItem('token',JSON.stringify('token'));
 if (usertorage && token) {
-  const deconect = document.querySelector(".login")
+  const deconect = document.querySelector(".login");
   deconect.innerText = "logaout";
   const btnn = document.querySelector(".group");
   btnn.style.display = "none";
@@ -83,8 +83,7 @@ if (usertorage && token) {
   const editer =document.getElementById("edition");
   editer.style.display = "flex";
 
-
-      deconect.addEventListener("click",function(){
+  deconect.addEventListener("click",function(){
   sessionStorage.removeItem('token');
   sessionStorage.removeItem('userId');
   document.location.href="index.html"
@@ -99,17 +98,19 @@ if (usertorage && token) {
   localStorage.removeItem("token");
   })
 
-
 // creation de la modale
-const modal = document.getElementById ("ensmble")
+const modal = document.getElementById ("ensmble");
 const modall = document.getElementById("myModal");
-const modalll = document.getElementById("myModall")
+const modalll = document.getElementById("myModall");
+
 // les bbouttons permettant d'ouvrir la moadale
-const Btn3 = document.getElementById("myBtn3")
-const btn4 = document.getElementById("ajoutphoto")
+const Btn3 = document.getElementById("myBtn3");
+const btn4 = document.getElementById("ajoutphoto");
+
 // les bouttons permettant de fermer les modales
-const quitter = document.getElementById("close")
-const quitterr = document.getElementById("closer")
+const quitter = document.getElementById("close");
+const quitterr = document.getElementById("closer");
+
 // Quand on clique sur 'x' la modale se ferme
 quitter.onclick = function (){
   modal.style.display = "none";
@@ -130,7 +131,7 @@ btn4.onclick = function () {
   modalll.style.display = "block"
 }
 
-// quitter la modale en cliquant en dehors de la modale
+// quitter la modal en cliquant en dehors de la modale
 modal.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
@@ -157,75 +158,157 @@ for (let i = 0; i < portfolio.length; i++) {
   const imageElement = document.createElement("img");
   imageElement.src = portfolio[i].imageUrl;
   const nomElement = document.createElement("p");
-  nomElement.innerText = "editer";
-  const iconSup = document.createElement("i");
+  nomElement.innerText = "éditer";
+  const iconSup = document.createElement("div");
+  iconSup.className = ("iconSupp");
   iconSup.classList.add("fa-solid", "fa-trash-can");
 
-
-   //  Envoie d'une requete pour supprimer l'element 
- const iconSupProjet =  document.querySelectorAll(".fa-solid.fa-trash-can");
- const portfolioId = portfolio.map(portfolio => portfolio.id);
- for (let i = 0; i < portfolio.length; i++){
-   iconSupProjet.onclick = function () {            
-       fetch(`http://localhost:5678/api/works/${id}`, {
-       method: "DELETE", 
-       headers: {
-           "Content-type": "application/json",
-           "Authorization": "Bearer" + sessionStorage.getItem("token")
-           },
-       })
-       .then(response => {
-           if (response.ok) {
-             // Supprimer l'élément dans la modale dynamiquement
-             iconSupProjet.remove.cilck();
-             alert('photo supprimé avec succer')
-             // Supprimer l'élément dans la galerie dynamiquement
-             const work = document.getElementById(`work${i+1}`);
-             console.log(work);
-             work.replaceWith();
-           }
-           else {
-             alert("Echec de suppression");
-           }
-   });
-};
-};
-
-  //  const workId = work.map(work => work.id);
-  //     for (let i = 0; i < work.length; i++){
-  //       iconsup.onclick = function () {            
-  //           fetch(`http://localhost:5678/api/works/${id}`, {
-  //           method: "DELETE", 
-  //           headers: {
-  //               "Content-type": "application/json",
-  //               "Authorization": "Bearer " + sessionStorage.getItem("token")
-  //               },
-  //           })
-  //           .then(response => {
-  //               if (response.ok) {
-  //                 // Supprimer l'élément dans la modale dynamiquement
-  //                 iconsup[i].remove.cilck();
-  //                 alert('photo supprimé avec succer')
-  //                 // Supprimer l'élément dans la galerie dynamiquement
-  //                 const work = document.getElementById(`work${i+1}`);
-  //                 console.log(work);
-  //                 work.replaceWith();
-  //               }
-  //               else {
-  //                 alert("Echec de suppression");
-  //               }
-  //       });
-  //   };
-  // };
-
-
- 
-
+  // iconSup.document.createElement("i");
+  // // inconSup.appendChild(del);
+   
   //Rattachement de nos balises au DOM
   sectionPortfolio.appendChild(sectionProjet);
   sectionProjet.appendChild(imageElement);
   sectionProjet.appendChild(nomElement);
   sectionProjet.appendChild(iconSup);
-}
-}
+  };
+};
 
+//  --- Supprimer un projet ---
+ const iconsDeleteProjet = document.querySelectorAll('.iconSupp');
+ let id = 0;
+ for (let i = 0; i < portfolio.length ; i++){
+     iconsDeleteProjet[i].addEventListener("click",() => {
+         const workId = portfolio.map(work => work.id);
+         id = workId[i];
+         fetch(`http://localhost:5678/api/works/${id}`, {
+         method: "DELETE",
+         headers: {
+             "Content-type": "application/json",
+             "Authorization": "Bearer " + sessionStorage.getItem("token")
+             },
+         })
+         .then(response => {
+             if (response.ok) {
+               // Supprimer l'élément dans la modale dynamiquement
+               iconsDeleteProjet[i].parentNode.remove();
+               // Supprimer l'élément dans la galerie dynamiquement
+               const projet = document.getElementById(`projet${i+1}`);
+
+               projet.replaceWith();
+             }
+           })
+           .catch(error => {
+             console.error(error);
+           });
+     });
+ };
+
+
+
+ // Supprimer la gallerie
+ const btnSupGallerie = document.querySelector('#supprimer-gallerie');
+ btnSupGallerie.addEventListener("click", () => {
+  let id = 0;
+  const workId = portfolio.map(work => work.id);
+  for (let i = 0; i < portfolio.length; i++) {
+      id = workId[i];
+      fetch(`http://localhost:5678/api/works/${id}`, {
+          method: "DELETE",
+          headers: {
+              "Content-type": "application/json",
+              "Authorization": "Bearer " + sessionStorage.getItem("token")
+          },
+      })
+      .then(response => {
+          if (response.ok) {
+            // Supprimer l'élément dans la modale dynamiquement
+            const projetModal = document.getElementById(`projetModal${i+1}`);
+            projetModal.replaceWith();
+            // Supprimer l'élément dans la galerie dynamiquement
+            const projet = document.getElementById(`projet${i+1}`);
+            console.log(projet);
+            projet.replaceWith();
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+  };
+});  
+
+//   
+
+const form = document.querySelector("#madall");
+const inputImage = document.getElementById("image");
+let currentimage = null;
+
+inputImage.addEventListener("change",(event)=>{
+    currentimage = event.target.files[0];
+// ---  Remplacement de l'image dans le formulaire d'ajout ---
+if (currentimage != null) {
+    formulaireImageAvant.style.display ="none";
+    formulaireImageApres.style.display ="flex";
+    formulaireImageApres.innerHTML = '<img src="' + URL.createObjectURL(currentimage) +'" class= "imageFormulaireApres">';
+    verifValueFormSubmitProject()
+} else {
+    formulaireImageAvant.style.display ="flex";
+    formulaireImageApres.style.display ="none";
+    buttonSubmitProjet.style.backgroundColor = "#A7A7A7";
+}
+})
+
+// --- Changement d'état du boutton valider ---
+let valeurTitleForm = null;
+let valeurCategorieForm = null;
+
+titleForm.addEventListener("change",(event)=>{
+    valeurTitleForm = event.target.value;
+    verifValueFormSubmitProject()
+});
+categorieForm.addEventListener("change",(event)=>{
+    valeurCategorieForm = event.target.value;
+    verifValueFormSubmitProject()
+});
+
+// --- Envoi du projet ---
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault(); 
+    let formData = new FormData();
+    formData.append('image',currentimage);
+    formData.append('title',title.value);
+    formData.append('category',categories[category.value]);
+     fetch(`http://localhost:5678/api/works`, {
+        method: "POST",
+        headers: {
+            "Authorization": "Bearer " + sessionStorage.getItem("token")
+        },
+        body: formData
+    }).then((response)=>{
+        return response.json();
+    }).then((data)=>{
+        alert("Projet envoyé !");
+        closeAllModal();
+        let i = works.length + 1;
+        const sectionGallery = document.querySelector(".gallery");
+        const workElement = document.createElement("figure");
+        workElement.id = "projet"+[i+1];
+        const imageElement = document.createElement("img");
+        imageElement.src = data.imageUrl;
+        imageElement.crossOrigin = "cross-origin";
+        const figcaptionElement = document.createElement("figcaption");
+        figcaptionElement.innerHTML = data.title;
+    
+        sectionGallery.appendChild(workElement);
+        workElement.appendChild(imageElement);
+        workElement.appendChild(figcaptionElement);
+    }).catch((error)=>{
+        alert(error)
+    });
+    currentimage = null;
+    titleForm.value = "";
+    categorieForm.value = "";
+    verifValueFormSubmitProject()
+    
+});

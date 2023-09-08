@@ -1,7 +1,0 @@
-{
-    "compile-hero.disable-compile-files-on-did-save-code": false,
-    "fiveServer.host": "127.0.0.1",
-    "fiveServer.port": 5500,
-    "liveServer.settings.port": 5501,
-    "livePreview.defaultPreviewPath": "/FrontEnd/login.html"
-}
