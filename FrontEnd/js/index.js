@@ -68,7 +68,6 @@ btnHotel.addEventListener("click", function(){
 // Recuperation du token
 const usertorage = window.localStorage.getItem("user");
 const token=window.localStorage.getItem("token");
-localStorage.setItem('token',JSON.stringify('token'));
 if (usertorage && token) {
   const deconect = document.querySelector(".login");
   deconect.innerText = "logaout";
@@ -131,7 +130,7 @@ btn4.onclick = function () {
   modalll.style.display = "block"
 }
 
-// quitter la modal en cliquant en dehors de la modale
+//quitter la modal en cliquant en dehors de la modale
 modal.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
@@ -150,7 +149,11 @@ retour.onclick = function () {
   modall.style.display = "block";
   modalll.style.display = "none"
 }
-// Get the modal element
+
+};
+
+function modalElements(){
+   // Get the modal element
 for (let i = 0; i < portfolio.length; i++) {
   // Création des balises
   const sectionPortfolio = document.querySelector(".modal-content");
@@ -172,7 +175,9 @@ for (let i = 0; i < portfolio.length; i++) {
   sectionProjet.appendChild(nomElement);
   sectionProjet.appendChild(iconSup);
   };
-};
+}
+
+modalElements()
 
 //  --- Supprimer un projet ---
  const iconsDeleteProjet = document.querySelectorAll('.iconSupp');
@@ -181,11 +186,13 @@ for (let i = 0; i < portfolio.length; i++) {
      iconsDeleteProjet[i].addEventListener("click",() => {
          const workId = portfolio.map(work => work.id);
          id = workId[i];
+        // const projectId = portfolio[i].id
+        // console.log(projectId)
          fetch(`http://localhost:5678/api/works/${id}`, {
          method: "DELETE",
          headers: {
              "Content-type": "application/json",
-             "Authorization": "Bearer " + sessionStorage.getItem("token")
+             "Authorization": "Bearer " + localStorage.getItem("token")
              },
          })
          .then(response => {
@@ -195,49 +202,18 @@ for (let i = 0; i < portfolio.length; i++) {
                // Supprimer l'élément dans la galerie dynamiquement
                const projet = document.getElementById(`projet${i+1}`);
 
-               projet.replaceWith();
+              //  projet.replaceWith();
+              //  generer();
+              //  modalElements();
+               location.reload(true)
              }
            })
            .catch(error => {
-             console.error(error);
+             console.log(error);
            });
      });
  };
 
-
-
- // Supprimer la gallerie
- const btnSupGallerie = document.querySelector('#supprimer-gallerie');
- btnSupGallerie.addEventListener("click", () => {
-  let id = 0;
-  const workId = portfolio.map(work => work.id);
-  for (let i = 0; i < portfolio.length; i++) {
-      id = workId[i];
-      fetch(`http://localhost:5678/api/works/${id}`, {
-          method: "DELETE",
-          headers: {
-              "Content-type": "application/json",
-              "Authorization": "Bearer " + sessionStorage.getItem("token")
-          },
-      })
-      .then(response => {
-          if (response.ok) {
-            // Supprimer l'élément dans la modale dynamiquement
-            const projetModal = document.getElementById(`projetModal${i+1}`);
-            projetModal.replaceWith();
-            // Supprimer l'élément dans la galerie dynamiquement
-            const projet = document.getElementById(`projet${i+1}`);
-            console.log(projet);
-            projet.replaceWith();
-          }
-        })
-        .catch(error => {
-          console.error(error);
-        });
-  };
-});  
-
-//   
 
 const form = document.querySelector("#madall");
 const inputImage = document.getElementById("image");
@@ -259,56 +235,59 @@ if (currentimage != null) {
 })
 
 // --- Changement d'état du boutton valider ---
-let valeurTitleForm = null;
-let valeurCategorieForm = null;
+// let valeurTitleForm = null;
+// let valeurCategorieForm = null;
 
-titleForm.addEventListener("change",(event)=>{
-    valeurTitleForm = event.target.value;
-    verifValueFormSubmitProject()
-});
-categorieForm.addEventListener("change",(event)=>{
-    valeurCategorieForm = event.target.value;
-    verifValueFormSubmitProject()
-});
+// const titleForm = document.querySelector(".valider-photo")
+// titleForm.addEventListener("change",(event)=>{
+//     valeurTitleForm = event.target.value;
+//     verifValueFormSubmitProject()
+// });
+
+// const categorieForm = document.querySelector(".titre-categorie")
+// categorieForm.addEventListener("change",(event)=>{
+//     valeurCategorieForm = event.target.value;
+//     verifValueFormSubmitProject()
+// });
 
 // --- Envoi du projet ---
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault(); 
-    let formData = new FormData();
-    formData.append('image',currentimage);
-    formData.append('title',title.value);
-    formData.append('category',categories[category.value]);
-     fetch(`http://localhost:5678/api/works`, {
-        method: "POST",
-        headers: {
-            "Authorization": "Bearer " + sessionStorage.getItem("token")
-        },
-        body: formData
-    }).then((response)=>{
-        return response.json();
-    }).then((data)=>{
-        alert("Projet envoyé !");
-        closeAllModal();
-        let i = works.length + 1;
-        const sectionGallery = document.querySelector(".gallery");
-        const workElement = document.createElement("figure");
-        workElement.id = "projet"+[i+1];
-        const imageElement = document.createElement("img");
-        imageElement.src = data.imageUrl;
-        imageElement.crossOrigin = "cross-origin";
-        const figcaptionElement = document.createElement("figcaption");
-        figcaptionElement.innerHTML = data.title;
+// form.addEventListener("submit", (e) => {
+//     e.preventDefault(); 
+//     let formData = new FormData();
+//     formData.append('image',currentimage);
+//     formData.append('title',title.value);
+//     formData.append('category',categories[category.value]);
+//      fetch(`http://localhost:5678/api/works`, {
+//         method: "POST",
+//         headers: {
+//             "Authorization": "Bearer " + sessionStorage.getItem("token")
+//         },
+//         body: formData
+//     }).then((response)=>{
+//         return response.json();
+//     }).then((data)=>{
+//         alert("Projet envoyé !");
+//         closeAllModal();
+//         let i = works.length + 1;
+//         const sectionGallery = document.querySelector(".gallery");
+//         const workElement = document.createElement("figure");
+//         workElement.id = "projet"+[i+1];
+//         const imageElement = document.createElement("img");
+//         imageElement.src = data.imageUrl;
+//         imageElement.crossOrigin = "cross-origin";
+//         const figcaptionElement = document.createElement("figcaption");
+//         figcaptionElement.innerHTML = data.title;
     
-        sectionGallery.appendChild(workElement);
-        workElement.appendChild(imageElement);
-        workElement.appendChild(figcaptionElement);
-    }).catch((error)=>{
-        alert(error)
-    });
-    currentimage = null;
-    titleForm.value = "";
-    categorieForm.value = "";
-    verifValueFormSubmitProject()
+//         sectionGallery.appendChild(workElement);
+//         workElement.appendChild(imageElement);
+//         workElement.appendChild(figcaptionElement);
+//     }).catch((error)=>{
+//       console.log(error)
+//     });
+//     currentimage = null;
+//     titleForm.value = "";
+//     categorieForm.value = "";
+//     verifValueFormSubmitProject()
     
-});
+// });
