@@ -235,20 +235,20 @@ if (currentimage != null) {
 })
 
 // --- Changement d'état du boutton valider ---
-// let valeurTitleForm = null;
-// let valeurCategorieForm = null;
+let valeurTitleForm = null;
+let valeurCategorieForm = null;
 
-// const titleForm = document.querySelector(".valider-photo")
-// titleForm.addEventListener("change",(event)=>{
-//     valeurTitleForm = event.target.value;
-//     verifValueFormSubmitProject()
-// });
+const titleForm = document.querySelector(".valider-photo")
+titleForm.addEventListener("change",(event)=>{
+    valeurTitleForm = event.target.value;
+    verifValueFormSubmitProject()
+});
 
-// const categorieForm = document.querySelector(".titre-categorie")
-// categorieForm.addEventListener("change",(event)=>{
-//     valeurCategorieForm = event.target.value;
-//     verifValueFormSubmitProject()
-// });
+const categorieForm = document.querySelector(".titre-categorie")
+categorieForm.addEventListener("change",(event)=>{
+    valeurCategorieForm = event.target.value;
+    verifValueFormSubmitProject()
+});
 
 // --- Envoi du projet ---
 
@@ -258,7 +258,7 @@ if (currentimage != null) {
 //     formData.append('image',currentimage);
 //     formData.append('title',title.value);
 //     formData.append('category',categories[category.value]);
-//      fetch(`http://localhost:5678/api/works`, {
+//      fetch(`http://localhost:5677/api/works`, {
 //         method: "POST",
 //         headers: {
 //             "Authorization": "Bearer " + sessionStorage.getItem("token")
@@ -269,10 +269,10 @@ if (currentimage != null) {
 //     }).then((data)=>{
 //         alert("Projet envoyé !");
 //         closeAllModal();
-//         let i = works.length + 1;
+//         let i = works.length + 0;
 //         const sectionGallery = document.querySelector(".gallery");
 //         const workElement = document.createElement("figure");
-//         workElement.id = "projet"+[i+1];
+//         workElement.id = "projet"+[i+0];
 //         const imageElement = document.createElement("img");
 //         imageElement.src = data.imageUrl;
 //         imageElement.crossOrigin = "cross-origin";
